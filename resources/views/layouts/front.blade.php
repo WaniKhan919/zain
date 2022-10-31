@@ -38,6 +38,8 @@
             background-image: none !important
         }
     </style>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <noscript>
         <style>
             [data-tf-src] {

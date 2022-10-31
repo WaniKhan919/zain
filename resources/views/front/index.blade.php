@@ -23,10 +23,10 @@
                                     data-auto-flip="3" data-in-effect="flip-horizontal"
                                     data-out-effect="" 
                                     @if($list->offerUrl)
-                                        onclick="javascript:window.location.href = '{{ $list->offerUrl }}';"
+                                        onclick="offerUrl(this)"
                                     @else
                                         
-                                    @endif
+                                    @endif data-id='{{ $list->id }}' data-link="{{ $list->offerUrl }}"
                                     >
                                     <div class="tile-flip-box-wrap">
                                         <div class="tile-flip-box">
@@ -162,5 +162,23 @@ setInterval(()=>{
 }, 10000);
 
 </script>
-
+<script>
+    function offerUrl(el){
+        let id=$(el).data('id')
+        let link=$(el).data('link')
+        $.ajax({
+            type: "POST",
+            url: "{{ route('offer-url') }}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "id":id
+            },
+            success: function (response) {
+            if(response){
+                window.location.href = link;
+            }
+            }
+        });
+    }
+</script>
 @endsection

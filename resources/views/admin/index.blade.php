@@ -32,10 +32,12 @@
                 <div class="card-block-small">
                   <i class="icofont icofont-ui-home bg-c-pink card1-icon"></i>
                   <span class="text-c-pink f-w-600">Offer Url / Click</span>
-                  <h4>0</h4>
+                  <h4>{{ $offerurl }}</h4>
                   <div>
                     <span class="f-left m-t-10 text-muted">
-                      <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
+                      <a href="{{ route('admin-offer-url') }}">
+                        <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>view
+                      </a>
                     </span>
                   </div>
                 </div>

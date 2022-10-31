@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Offerurl;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'email'   => 'required|email',
-            'password' => 'required|min:6'
+            'password' => 'required'
         ]);
 
         if (Auth::guard('admin')->attempt($request->only(['email','password']))) {
@@ -34,7 +35,8 @@ class AdminController extends Controller
     }
     public function dashboard(){
         $service=Service::count();
-        return view('admin.index',compact('service'));
+        $offerurl=Offerurl::where('click',1)->count();
+        return view('admin.index',compact('service','offerurl'));
     }
     public function profile(){
         $admin=Auth::guard('admin')->user();

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\OfferurlController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
@@ -44,3 +45,5 @@ Route::get('/admin/logout', function () {
     Auth::guard('admin')->logout();
     return redirect()->route('admin.login');
 });
+Route::post('/offerurl',[OfferurlController::class,'index'])->name('offer-url');
+Route::get('/admin/offerurl',[OfferurlController::class,'view'])->name('admin-offer-url');

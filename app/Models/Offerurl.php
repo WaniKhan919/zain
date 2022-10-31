@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Offerurl extends Model
 {
     use HasFactory;
-    public function clicks(){
-        return $this->hasMany(Offerurl::class);
+    public function services(){
+        return $this->belongsToMany(Service::class);
     }
 }
