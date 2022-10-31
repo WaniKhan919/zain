@@ -23,6 +23,7 @@
   <!-- Style.css -->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery.mCustomScrollbar.css')}}">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -54,23 +55,23 @@
             <ul class="nav-right">
               <li class="user-profile header-notification">
                 <a href="#!">
-                  <img src="{{ asset('assets/images/avatar-4.jpg')}}" class="img-radius" alt="Profile">
-                  <span>John Doe</span>
+                  @if (Auth::guard('admin')->user()->image)
+                    <img src="{{ asset('storage/'.Auth::guard('admin')->user()->image)}}" class="img-radius" alt="Profile">
+                  @else
+                    <img src="{{ asset('assets/images/avatar-4.jpg')}}" class="img-radius" alt="Profile">
+                  @endif
+                  
+                  <span>{{ Auth::guard('admin')->user()->name ?? 'admin' }}</span>
                   <i class="ti-angle-down"></i>
                 </a>
                 <ul class="show-notification profile-notification">
                   <li>
-                    <a href="#!">
-                      <i class="ti-settings"></i> Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
+                    <a href="{{ route('admin-profile') }}">
                       <i class="ti-user"></i> Profile
                     </a>
                   </li>
                   <li>
-                    <a href="auth-normal-sign-in.html">
+                    <a href="{{ url('/admin/logout') }}">
                       <i class="ti-layout-sidebar-left"></i> Logout
                     </a>
                   </li>
@@ -85,7 +86,6 @@
           <nav class="pcoded-navbar">
             <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
             <div class="pcoded-inner-navbar main-menu">
-              <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
               <ul class="pcoded-item pcoded-left-item">
                 <li class="active">
                   <a href="{{ route('admin-dashboard') }}">

@@ -43,23 +43,13 @@
               <!-- Basic Form Inputs card start -->
               <div class="card">
                 <div class="card-block">
-                  <h4 class="sub-title">Services</h4>
-                  @if (session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                      {{ session()->get('success') }}
-                    </div>
-                  @endif
-                  @if (session()->has('error'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      {{ session()->get('error') }}
-                    </div>
-                  @endif
-                  <form method="POST" action="{{ route('services.store') }}" enctype="multipart/form-data">
+                  <h4 class="sub-title">Edit Service</h4>
+                  <form method="POST" action="{{ route('services.update',$service->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Title</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="title" placeholder="Title">
+                        <input type="text" class="form-control" name="title" value="{{ $service->title ?? ''}}">
                         @error('title')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -74,12 +64,15 @@
                             {{ $message }}
                           </span>
                         @enderror
+                        @if($service->image)
+                          <img src="{{ asset('storage/'.$service->image) }}" height="100px" alt="">
+                        @endif
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Offer Url</label>
                       <div class="col-sm-4">
-                        <input id="color" type="text" name="offerUrl" class="form-control" placeholder="Offer URL" >
+                        <input id="color" type="text" name="offerUrl" class="form-control" placeholder="Offer URL" value="{{ $service->offerUrl ?? ''}}">
                         @error('offerUrl')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -88,7 +81,7 @@
                       </div>
                       <label class="col-sm-2 col-form-label">Post Back URL</label>
                       <div class="col-sm-4">
-                        <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="Post Back Url" >
+                        <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="Post Back Url" value="{{ $service->postBackUrl ?? ''}}" >
                         @error('postBackUrl')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -99,7 +92,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Back Color</label>
                       <div class="col-sm-4">
-                        <input id="color" type="color" name="back_color" class="form-control" value="" style="height:50px !important;">
+                        <input id="color" type="color" name="back_color" class="form-control" value="{{ $service->back_color ?? ''}}" style="height:50px !important;">
                         @error('bg_color')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -108,7 +101,7 @@
                       </div>
                       <label class="col-sm-2 col-form-label">Font Color</label>
                       <div class="col-sm-4">
-                        <input id="color" type="color" name="font_color" class="form-control" value="" style="height:50px !important;">
+                        <input id="color" type="color" name="font_color" class="form-control" value="{{ $service->font_color ?? '' }}" style="height:50px !important;">
                         @error('font_color')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -119,7 +112,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Description</label>
                       <div class="col-sm-10">
-                        <textarea name="description" class="form-control" id="description" rows="10"></textarea>
+                        <textarea name="description" class="form-control" id="description" rows="10">{{ $service->description ?? ''}}</textarea>
                         @error('description')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -128,7 +121,7 @@
                       </div>
                     </div>
                     <div class="card-header-right">
-                      <button class="btn btn-card btn-primary float-right">Add</button>
+                      <button class="btn btn-card btn-primary float-right" type="submit">Update</button>
                     </div>
                   </form>
                 </div>

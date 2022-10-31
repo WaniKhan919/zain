@@ -40,6 +40,15 @@
                                         <h3 class="text-left txt-primary">Sign In</h3>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        @if (session()->has('error'))
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                {{ session()->get('error') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                                 <hr/>
                                 <div class="input-group">
                                   <input type="email" class="form-control" placeholder="Your Email Address" name="email">
