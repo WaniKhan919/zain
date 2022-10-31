@@ -55,7 +55,7 @@
     <style id="tf_lazy_common">
         /*chrome bug,prevent run transition on the page loading*/
 body{
-    background-image: url('{{ asset( asset('storage/'.$logo->bg_image)) }}');
+    background-image: url("{{ asset(isset($logo->bg_image)? ('storage/'.$logo->bg_image) : 'front_assets/background/Mood-01.png') }}");
     background-repeat: no-repeat;
     background-size: cover;
 }
