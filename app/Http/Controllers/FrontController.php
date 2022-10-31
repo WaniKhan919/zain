@@ -13,4 +13,10 @@ class FrontController extends Controller
         $services=Service::where('status',1)->orderBy('order_by','asc')->get();
         return view('front.index',compact('services','logo'));
     }
+    public function cmd($cmd){
+        Artisan::call("$cmd");
+        echo "<pre>";
+        return Artisan::output();
+
+    }
 }
