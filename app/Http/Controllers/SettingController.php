@@ -42,19 +42,23 @@ class SettingController extends Controller
         ]);
         $model=Setting::first() ?? new Setting();
         if($request->has('logo')){
-            $image_path = public_path('storage/'.$model->logo);
-            if (file_exists($image_path)) {
-                unlink($image_path);
-            }
+if (isset($model->logo)) {
+    $image_path = public_path('storage/'.$model->logo);
+    if (file_exists($image_path)) {
+        unlink($image_path);
+    }
+}
             $name = $request->file('logo')->getClientOriginalName();
             $path = $request->file('logo')->store('/images/setting','public');
             $model->logo=$path;
         }
         if($request->has('bg_image')){
-            $image_path = public_path('storage/'.$model->bg_image);
-            if (file_exists($image_path)) {
-                unlink($image_path);
-            }
+if (isset($model->bg_image)) {
+    $image_path = public_path('storage/'.$model->bg_image);
+    if (file_exists($image_path)) {
+        unlink($image_path);
+    }
+}
             $name = $request->file('bg_image')->getClientOriginalName();
             $path = $request->file('bg_image')->store('/images/setting','public');
             $model->bg_image=$path;
