@@ -11,7 +11,7 @@ class SubscriptionController extends Controller
     public function index($service,Request $request)
     {
         $service1=Service::where('postBackUrl',$service)->first();
-        if(isset($request->clickid)){
+        if(isset($request->clickid) && isset($service1)){
             session()->put('click_id',$request->clickid);
             return redirect($service1->offerUrl);
         }
@@ -20,14 +20,13 @@ class SubscriptionController extends Controller
             $model=new Subscription();
             $model->phone_no=$request->msisdn;
             $model->service_name=$service;
-            $model->service_id=$service1->id;
+            $model->service_id=$service1->id ?? '';
             $model->click_id=$click_id ?? null;
             if($model->save()){
                 return redirect('/')->with('success','Successs');
-            }else{
-                return redirect('/')->with('error','Failed');;
             }
         }
+        return redirect('/')->with('error','Failed');;
     }
 
     public function view()

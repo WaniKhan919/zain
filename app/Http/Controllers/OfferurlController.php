@@ -22,12 +22,25 @@ class OfferurlController extends Controller
         }
     }
 
-    public function view()
+    public function view(Request $request)
     {
         // $offer_urls=DB::table('offerurls')->join('services', 'services.id', '=', 'offerurls.service_id')
         // ->select('offerurls.*', 'services.*')
         // ->get();
-        $offer_urls=Service::with('clicks')->get();
+        // $offer_urls=Service::with('clicks')->get();
+        $offer_urls = Service::with(['clicks'=>function($q)use($request){
+            if(isset($request->year)){
+                $q->whereYear('created_at',$request->year);
+            }
+            if(isset($request->month)){
+                $q->whereMonth('created_at',$request->month);
+            }
+            if (isset($request->day)) {
+                $q->whereDay('created_at', $request->day);
+            }   
+            return $q;
+        }])->whereHas('clicks')->get();
+
         return view('admin.offerurls.index',compact('offer_urls'));
     }
 
