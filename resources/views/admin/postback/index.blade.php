@@ -65,6 +65,7 @@
                       <th>Date</th>
                       <th>Click</th>
                       <th>Total Click</th>
+                      <th>View Report</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -90,6 +91,9 @@
                         </td>
                         <td>
                           {{ $list->postback->count() }}
+                        </td>
+                        <td>
+                          <a href="{{ route('post-backurl-report',$list->id) }}" class="btn btn-outline-info"> View</a>
                         </td>
                       </tr>
                       @endforeach

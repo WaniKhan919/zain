@@ -86,9 +86,15 @@
                           </span>
                         @enderror
                       </div>
-                      <label class="col-sm-2 col-form-label">Post Back URL</label>
+                      <label class="col-sm-2 col-form-label">Post Back URL
+                      </label>
+                      
                       <div class="col-sm-4">
-                        <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="Post Back Url" >
+                        
+                        <div class="form-group">
+                          <span class="">https://www.zain.bmazaj.com/</span>
+                          <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="Post Back Url"  >
+                        </div>
                         @error('postBackUrl')
                           <span class="text-danger" role="alert">
                             {{ $message }}

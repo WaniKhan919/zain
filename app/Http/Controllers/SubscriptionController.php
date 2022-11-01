@@ -35,5 +35,11 @@ class SubscriptionController extends Controller
         $postback=Service::with('clicks')->get();
         return view('admin.postback.index',compact('postback'));
     }
+    public function report($id)
+    {
+        
+        $reports=Subscription::where('service_id',$id)->get();
+        return view('admin.postback.report',compact('reports'));
+    }
 
 }
