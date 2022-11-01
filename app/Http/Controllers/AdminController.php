@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Offerurl;
 use App\Models\Service;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -36,7 +37,8 @@ class AdminController extends Controller
     public function dashboard(){
         $service=Service::count();
         $offerurl=Offerurl::where('click',1)->count();
-        return view('admin.index',compact('service','offerurl'));
+        $subscription=Subscription::where('click_id','!=',null)->count();
+        return view('admin.index',compact('service','offerurl','subscription'));
     }
     public function profile(){
         $admin=Auth::guard('admin')->user();

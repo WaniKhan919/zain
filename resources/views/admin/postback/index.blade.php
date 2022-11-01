@@ -13,7 +13,7 @@
               <div class="page-header-title">
                 <i class="ti-layers bg-c-pink"></i>
                 <div class="d-inline">
-                  <h4>Offer Urls/ Click</h4>
+                  <h4>Post Back per service</h4>
                 </div>
               </div>
             </div>
@@ -23,7 +23,7 @@
         <div class="page-body">
           <div class="card">
             <div class="card-header">
-              <h5>Offer Urls/ Click</h5>
+              <h5>Postback per service</h5>
               @if (session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                   {{ session()->get('success') }}
@@ -35,7 +35,7 @@
                 </div>
               @endif
               <div id="position_msg"></div>
-              <form action="{{ route('date-filter') }}" method="post">
+              {{-- <form action="{{ route('date-filter') }}" method="post">
                 @csrf
                 <div class="row input-daterange">
                   <div class="col-md-3">
@@ -51,7 +51,7 @@
                       <button type="submit" name="filter" id="filter" class="btn btn-primary">Filter</button>
                   </div>
                 </div>
-              </form>
+              </form> --}}
             </div>
             <div class="card-block table-border-style">
               <div class="table-responsive">
@@ -71,7 +71,7 @@
                     @php
                       $i=0;
                     @endphp
-                    @foreach ($offer_urls as $list)
+                    @foreach ($postback as $list)
                     @php
                       $i++
                     @endphp
@@ -82,14 +82,14 @@
                         <td>{{ $list->description }}</td>
                         <td>{{ $list->created_at }}</td>
                         <td>
-                          @if($list->clicks->count()>0)
+                          @if($list->postback->count()>0)
                             Clicked
                           @else
                           ---
                           @endif
                         </td>
                         <td>
-                          {{ $list->clicks->count() }}
+                          {{ $list->postback->count() }}
                         </td>
                       </tr>
                       @endforeach
