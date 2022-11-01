@@ -11,7 +11,7 @@
           <div class="row align-items-end">
             <div class="col-lg-10">
               <div class="page-header-title">
-                <i class="ti-layers bg-c-pink"></i>
+                <i class="icofont icofont-ui-home bg-c-blue card1-icon"></i>
                 <div class="d-inline">
                   <h4>Offer Urls/ Click</h4>
                 </div>
