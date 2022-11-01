@@ -11,7 +11,7 @@
           <div class="row align-items-end">
             <div class="col-lg-10">
               <div class="page-header-title">
-                <i class="ti-layers bg-c-pink"></i>
+                <i class="icofont icofont-warning-alt bg-c-green card1-icon"></i>
                 <div class="d-inline">
                   <h4>Post Back per service</h4>
                 </div>
@@ -60,7 +60,7 @@
                     <tr>
                       <th>Sr No.</th>
                       <th>Title</th>
-                      <th>Urls</th>
+                      <th>Post Back Url</th>
                       <th>Description</th>
                       <th>Date</th>
                       <th>Click</th>
@@ -78,7 +78,7 @@
                       <tr>
                         <td>{{ $i }}</td>
                         <td>{{ $list->title }}</td>
-                        <td>{{ $list->offerUrl }}</td>
+                        <td>{{ $list->postBackUrl }}</td>
                         <td>{{ $list->description }}</td>
                         <td>{{ $list->created_at }}</td>
                         <td>

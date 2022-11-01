@@ -37,8 +37,9 @@
             <a class="mobile-menu" id="mobile-collapse" href="#!">
               <i class="ti-menu"></i>
             </a>
-            <a href="{{ route('admin-dashboard') }}">
-              <img class="img-fluid" src="{{ asset('assets/images/logo.png')}}" alt="Theme-Logo" />
+            <a href="{{ route('admin-dashboard') }}" class="ml-4">
+              Welcome Admin
+              {{-- <img class="img-fluid" src="{{ asset('assets/images/logo.png')}}" alt="Theme-Logo" /> --}}
             </a>
             <a class="mobile-options">
               <i class="ti-more"></i>
@@ -50,7 +51,7 @@
             <ul class="nav-left">
               <li>
                 
-            <a class="mobile-menu" id="mobile-collapse" href="{{ url('/') }}" target="_blank">
+            <a href="{{ url('/') }}" target="_blank">
               <i class="ti-world"></i>
             </a> 
               </li>
