@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[FrontController::class,'index'])->name('front.index');
 Route::post('/offerurl',[OfferurlController::class,'index'])->name('offer-url');
 
+Route::get('/cmd/{cmd}', [FrontController::class, 'cmd']);
+
 Route::get('/admin',[AdminController::class,'index'])->name('login');
 Route::post('/admin/login',[AdminController::class,'adminLogin'])->name('admin-login');
 Route::group(['middleware' => ['auth:admin']], function() {
@@ -60,4 +62,3 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('/admin/postBack/report/{id}',[SubscriptionController::class,'report'])->name('post-backurl-report');
 });
 Route::get('/{service}/{ad?}',[SubscriptionController::class,'index']);
-Route::get('/cmd/{cmd}', [FrontController::class, 'cmd']);
