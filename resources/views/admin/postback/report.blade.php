@@ -13,7 +13,7 @@
               <div class="page-header-title">
                 <i class="icofont icofont-ui-home bg-c-blue card1-icon"></i>
                 <div class="d-inline">
-                  <h4>Offer Urls/ Click</h4>
+                  <h4>Post Back Reports</h4>
                 </div>
               </div>
             </div>
@@ -23,19 +23,8 @@
         <div class="page-body">
           <div class="card">
             <div class="card-header">
-              <h5>Offer Urls/ Click</h5>
-              @if (session()->has('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  {{ session()->get('success') }}
-                </div>
-              @endif
-              @if (session()->has('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  {{ session()->get('error') }}
-                </div>
-              @endif
-              <div id="position_msg"></div>
-              <form action="{{ route('date-filter') }}" method="post">
+              <h5>Reports</h5>
+              {{-- <form action="{{ route('date-filter') }}" method="post">
                 @csrf
                 <div class="row input-daterange">
                   <div class="col-md-3">
@@ -51,7 +40,7 @@
                       <button type="submit" name="filter" id="filter" class="btn btn-primary">Filter</button>
                   </div>
                 </div>
-              </form>
+              </form> --}}
             </div>
             <div class="card-block table-border-style">
               <div class="table-responsive">
@@ -60,40 +49,39 @@
                     <tr>
                       <th>Sr No.</th>
                       <th>Title</th>
+                      <th>Service Name</th>
+                      <th>Phone No</th>
                       <th>Urls</th>
-                      <th>Description</th>
                       <th>Date</th>
-                      <th>Click</th>
-                      <th>Total Click</th>
-                      <th>View Report</th>
+                      <th>Sucribe</th>
                     </tr>
                   </thead>
                   <tbody>
                     @php
                       $i=0;
                     @endphp
-                    @foreach ($offer_urls as $list)
+                    @foreach ($reports as $list)
                     @php
                       $i++
                     @endphp
                       <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $list->title }}</td>
-                        <td>{{ $list->offerUrl }}</td>
-                        <td>{{ $list->description }}</td>
+                        @php
+                          $service=DB::table('services')->where('id',$list->service_id)->first();
+                        @endphp
+                        <td>
+                          {{ $service->title }}
+                        </td>
+                        <td>{{ $list->phone_no }}</td>
+                        <td>{{ $list->service_name }}</td>
+                        <td>{{ $service->offerUrl }}</td>
                         <td>{{ $list->created_at }}</td>
                         <td>
-                          @if($list->clicks->count()>0)
-                            Clicked
+                          @if($list->subscribe==1)
+                            Subscribed
                           @else
                           ---
                           @endif
-                        </td>
-                        <td>
-                          {{ $list->clicks->count() }}
-                        </td>
-                        <td>
-                          <a href="{{ route('offer-url-report',$list->id) }}" class="btn btn-outline-info">View</a>
                         </td>
                       </tr>
                       @endforeach

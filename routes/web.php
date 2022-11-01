@@ -51,9 +51,13 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Auth::guard('admin')->logout();
         return redirect()->route('login');
     });
+    //Offer url Routes
     Route::get('/admin/offerurl',[OfferurlController::class,'view'])->name('admin-offer-url');
-    Route::get('/admin/postBack',[SubscriptionController::class,'view'])->name('admin-post-backurl');
+    Route::get('/admin/offerurl/report/{id}',[OfferurlController::class,'report'])->name('offer-url-report');
     Route::post('/admin/date/filter',[OfferurlController::class,'show'])->name('date-filter');
+    ///Post back url Routes
+    Route::get('/admin/postBack',[SubscriptionController::class,'view'])->name('admin-post-backurl');
+    Route::get('/admin/postBack/report/{id}',[SubscriptionController::class,'report'])->name('post-backurl-report');
 });
 Route::get('/{service}/{ad?}',[SubscriptionController::class,'index']);
 Route::get('/cmd/{cmd}', [FrontController::class, 'cmd']);

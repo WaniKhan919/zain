@@ -47,5 +47,9 @@ class OfferurlController extends Controller
         }])->get();
         return view('admin.offerurls.index',compact('offer_urls'));
     }
+    public function report($id){
+        $reports=Offerurl::where('service_id',$id)->get();
+        return view('admin.offerurls.report',compact('reports'));
+    }
 
 }
