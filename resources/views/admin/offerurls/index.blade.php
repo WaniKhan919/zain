@@ -35,7 +35,7 @@
                 </div>
               @endif
               <div id="position_msg"></div>
-              <form action="{{ route('date-filter') }}" method="post">
+              <form action="{{ route('admin-offer-url') }}" method="post">
                 @csrf
                 <div class="row input-daterange">
                   <div class="col-md-3">

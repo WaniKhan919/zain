@@ -72,8 +72,8 @@
                         <td>
                           {{ $service->title }}
                         </td>
-                        <td>{{ $list->phone_no }}</td>
                         <td>{{ $list->service_name }}</td>
+                        <td>{{ $list->phone_no }}</td>
                         <td>{{ $service->offerUrl }}</td>
                         <td>{{ $list->created_at }}</td>
                         <td>
