@@ -9,11 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class OfferurlController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
         $model=new Offerurl();
@@ -26,11 +22,6 @@ class OfferurlController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function view()
     {
         // $offer_urls=DB::table('offerurls')->join('services', 'services.id', '=', 'offerurls.service_id')
@@ -40,59 +31,21 @@ class OfferurlController extends Controller
         return view('admin.offerurls.index',compact('offer_urls'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function show(Offerurl $offerurl,Request $request)
     {
-        //
+        $offer_urls = Service::with(['clicks'=>function($q)use($request){
+            if(isset($request->year)){
+                $q->whereYear('created_at',$request->year);
+            }
+            if(isset($request->month)){
+                $q->whereMonth('created_at',$request->month);
+            }
+            if (isset($request->day)) {
+                $q->whereDay('created_at', $request->day);
+            }   
+            return $q;
+        }])->get();
+        return view('admin.offerurls.index',compact('offer_urls'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Offerurl  $offerurl
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Offerurl $offerurl)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Offerurl  $offerurl
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Offerurl $offerurl)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Offerurl  $offerurl
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Offerurl $offerurl)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Offerurl  $offerurl
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Offerurl $offerurl)
-    {
-        //
-    }
 }

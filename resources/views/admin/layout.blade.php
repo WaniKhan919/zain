@@ -46,7 +46,14 @@
           </div>
 
           <div class="navbar-container container-fluid">
+            
             <ul class="nav-left">
+              <li>
+                
+            <a class="mobile-menu" id="mobile-collapse" href="{{ url('/') }}" target="_blank">
+              <i class="ti-world"></i>
+            </a> 
+              </li>
               <li>
                 <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
               </li>
@@ -94,14 +101,14 @@
                     <span class="pcoded-mcaret"></span>
                   </a>
                 </li>
-                <li class="pcoded-hasmenu">
+                <li class="pcoded">
                   <a href="{{ route('services.index') }}">
                     <span class="pcoded-micon"><i class="ti-layers"></i></span>
                     <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Services</span>
                     <span class="pcoded-mcaret"></span>
                   </a>
                 </li>
-                <li class="pcoded-hasmenu">
+                <li class="pcoded">
                   <a href="{{ route('setting.index') }}">
                     <span class="pcoded-micon"><i class="ti-settings"></i></span>
                     <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Settings</span>

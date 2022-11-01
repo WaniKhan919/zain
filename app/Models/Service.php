@@ -11,4 +11,7 @@ class Service extends Model
     public function clicks(){
         return $this->hasMany(Offerurl::class);
     }
+    public function postback(){
+        return $this->hasMany(Subscription::class);
+    }
 }

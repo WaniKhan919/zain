@@ -38,16 +38,13 @@
               <form action="{{ route('date-filter') }}" method="post">
                 @csrf
                 <div class="row input-daterange">
-                  <div class="col-md-3">
-                      <input type="number" name="year" id="from_date" class="form-control" placeholder="Year"/>
+                  <div class="col-md-4">
+                      <input type="date" name="from_date" id="from_date" class="form-control" placeholder="From Date"/>
                   </div>
-                  <div class="col-md-3">
-                      <input type="number" name="day" id="to_date" class="form-control" placeholder="Date"/>
+                  <div class="col-md-4">
+                      <input type="date" name="to_date" id="to_date" class="form-control" placeholder="To Date"/>
                   </div>
-                  <div class="col-md-3">
-                      <input type="number" name="month" id="to_date" class="form-control" placeholder="Month"/>
-                  </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                       <button type="submit" name="filter" id="filter" class="btn btn-primary">Filter</button>
                   </div>
                 </div>
@@ -67,6 +64,7 @@
                       <th>Total Click</th>
                     </tr>
                   </thead>
+                  
                   <tbody>
                     @php
                       $i=0;

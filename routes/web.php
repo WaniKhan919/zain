@@ -5,6 +5,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\OfferurlController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,8 @@ Route::group(['middleware' => ['auth:admin']], function() {
         return redirect()->route('login');
     });
     Route::get('/admin/offerurl',[OfferurlController::class,'view'])->name('admin-offer-url');
+    Route::get('/admin/postBack',[SubscriptionController::class,'view'])->name('admin-post-backurl');
+    Route::post('/admin/date/filter',[OfferurlController::class,'show'])->name('date-filter');
 });
-
+Route::get('/{service}/{ad?}',[SubscriptionController::class,'index']);
 Route::get('/cmd/{cmd}', [FrontController::class, 'cmd']);
