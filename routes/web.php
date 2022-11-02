@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\OfferurlController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscriptionController;
@@ -35,6 +36,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('setting/index',[SettingController::class,'index'])->name('index');
         Route::post('setting/store',[SettingController::class,'store'])->name('store');
     });
+    Route::resource('pages',PageController::class);
     //Services Routes
     Route::name('services.')->group(function () {
         Route::get('services/index',[ServiceController::class,'index'])->name('index');

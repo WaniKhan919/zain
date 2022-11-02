@@ -116,6 +116,13 @@
                     <span class="pcoded-mcaret"></span>
                   </a>
                 </li>
+                <li class="pcoded">
+                  <a href="{{ route('pages.index') }}">
+                    <span class="pcoded-micon"><i class="ti-settings"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Page</span>
+                    <span class="pcoded-mcaret"></span>
+                  </a>
+                </li>
               </ul>
             </div>
           </nav>
