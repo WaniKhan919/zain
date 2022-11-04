@@ -14,7 +14,7 @@
               <div class="page-header-title">
                 <i class="ti-settings bg-c-blue"></i>
                 <div class="d-inline">
-                  <h4>Landnig Page</h4>
+                  <h4>Landing Page</h4>
                 </div>
               </div>
             </div>
@@ -22,13 +22,13 @@
               <div class="page-header-breadcrumb">
                 <ul class="breadcrumb-title">
                   <li class="breadcrumb-item">
-                    <a href="index.html">
+                    <a href="{{ route('admin-dashboard') }}">
                       <i class="icofont icofont-home"></i>
                     </a>
                   </li>
                   <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Dashboard</a>
                   </li>
-                  <li class="breadcrumb-item"><a href="{{ route('pages.index') }}">Landnig Page</a>
+                  <li class="breadcrumb-item"><a href="{{ route('pages.index') }}">Landing Page</a>
                   </li>
                 </ul>
               </div>
@@ -44,7 +44,7 @@
               <!-- Basic Form Inputs card start -->
               <div class="card">
                 <div class="card-block">
-                  <h4 class="sub-title">Landnig Page</h4>
+                  <h4 class="sub-title">Landing Page</h4>
                   @if (session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                       {{ session()->get('success') }}

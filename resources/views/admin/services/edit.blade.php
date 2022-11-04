@@ -22,7 +22,7 @@
               <div class="page-header-breadcrumb">
                 <ul class="breadcrumb-title">
                   <li class="breadcrumb-item">
-                    <a href="index.html">
+                    <a href="{{ route('admin-dashboard') }}">
                       <i class="icofont icofont-home"></i>
                     </a>
                   </li>
@@ -56,17 +56,14 @@
                           </span>
                         @enderror
                       </div>
-                      <label class="col-sm-2 col-form-label">Thumbnail</label>
+                      <label class="col-sm-2 col-form-label">Short Code</label>
                       <div class="col-sm-4">
-                        <input type="file" class="form-control" name="image">
-                        @error('image')
+                        <input type="number" class="form-control" name="shortcode" value="{{ $service->shortcode ?? ''}}" placeholder="Short Code">
+                        @error('shortcode')
                           <span class="text-danger" role="alert">
                             {{ $message }}
                           </span>
                         @enderror
-                        @if($service->image)
-                          <img src="{{ asset('storage/'.$service->image) }}" height="100px" alt="">
-                        @endif
                       </div>
                     </div>
                     <div class="form-group row">
@@ -107,6 +104,20 @@
                             {{ $message }}
                           </span>
                         @enderror
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Thumbnail</label>
+                      <div class="col-sm-10">
+                        <input type="file" class="form-control" name="image">
+                        @error('image')
+                          <span class="text-danger" role="alert">
+                            {{ $message }}
+                          </span>
+                        @enderror
+                        @if($service->image)
+                          <img src="{{ asset('storage/'.$service->image) }}" height="100px" alt="">
+                        @endif
                       </div>
                     </div>
                     <div class="form-group row">

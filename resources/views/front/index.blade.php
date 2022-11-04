@@ -18,95 +18,100 @@
                                     $i=0;
                                 @endphp
                                 @foreach ($services as $list)
-                                <div id="tf-tile-24-{{ $i }}"
-                                    class="tf-tile size-square-large has-flip tile-type-front-button"
-                                    data-auto-flip="3" data-in-effect="flip-horizontal"
-                                    data-out-effect="" 
-                                    @if($list->offerUrl)
-                                        onclick="offerUrl(this)"
-                                    @else
-                                        
-                                    @endif data-id='{{ $list->id }}' data-link="{{ $list->offerUrl }}"
-                                    >
-                                    <div class="tile-flip-box-wrap">
-                                        <div class="tile-flip-box">
-                                            <style>
-                                                #tf-tile-24-{{ $i }} .tile-front {
-                                                    background-image: url("{{ asset('/storage/'. $list->image) }}");
+                                @if ($list->postBackUrl)
+                                <a href="#" onclick="servicePage(this)" data-url="{{ route('service-page',$list->postBackUrl) }}">
+                                @else
+                                <a href="#">
+                                @endif
+                                    <div id="tf-tile-24-{{ $i }}"
+                                        class="tf-tile size-square-large has-flip tile-type-front-button"
+                                        data-auto-flip="3" data-in-effect="flip-horizontal"
+                                        data-out-effect=""
+                                        >
+                                        <div class="tile-flip-box-wrap">
+                                            <div class="tile-flip-box">
+                                                <style>
+                                                    #tf-tile-24-{{ $i }} .tile-front {
+                                                        background-image: url("{{ asset('/storage/'. $list->image) }}");
+                                                    }
+
+                                                    #tf-tile-24-{{ $i }} .tile-front a {}
+
+                                                </style>
+                                                <div
+                                                    class="tile-front tile-type-button ui default">
+                                                    <div class="tile-inner"> </div>
+                                                    <!-- .tile-inner -->
+                                                </div>
+                                                <!-- .tile-front -->
+                                                <style>
+                                                    #tf-tile-24-{{ $i }} .tile-back {}
+
+                                                    #tf-tile-24-{{ $i }} .tile-back a {}
+
+                                                </style>
+                                                <div
+                                                    class="tile-back tile-type-text ui" style="background-color: {{ $list->back_color ?? 'yellow' }};">
+                                                    <div class="tile-inner">
+                                                        <div class="tile-content">
+                                                            @if ($list->postBackUrl)
+                                                                <a href="{{ route('service-page',$list->postBackUrl) }}">
+                                                                @else
+                                                                <a href="#">
+                                                                @endif
+                                                            <h6 style="text-align: center;color:{{ $list->font_color ?? "black" }};">
+                                                                <strong>{{ $list->description }}</strong>
+                                                            </h6>
+                                                            </a>
+                                                        </div>
+                                                        <!-- .tile-content -->
+                                                    </div>
+                                                    <!-- .tile-inner -->
+                                                </div>
+                                                <!-- .tile-back -->
+                                            </div>
+                                            <!-- .tile-flip-box -->
+                                        </div>
+                                        <!-- .tile-flip-box-wrap -->
+                                        <div class="tf-tile-data">
+                                            <script type="text/json">
+                                                {
+                                                    "size": "square-large",
+                                                    "type_front": "button",
+                                                    "color_front": "default",
+                                                    "button_link_params_front": "|",
+                                                    "icon_type_front": "icon",
+                                                    "gallery_autoplay_front": "off",
+                                                    "gallery_hide_timer_front": "no",
+                                                    "type_map_front": "ROADMAP",
+                                                    "zoom_map_front": "7",
+                                                    "scrollwheel_map_front": "enable",
+                                                    "draggable_map_front": "enable",
+                                                    "action_param_front": "|",
+                                                    "background_image_front": "{{ asset('/storage/'. $list->image) }}",
+                                                    "type_back": "text",
+                                                    "color_back": "{{ $list->color ?? 'yellow' }}",
+                                                    "text_back": " <
+                                                        h6 style = \
+                                                        "text-align: center;\"><strong>\u062d\u0628\u0648\u0628\u0629 \u0643\u0644\u0627\u0645\u0647\u0627 \u0634\u0646\u0648\u061f \u0627\u0636\u063a\u0637 <u>\u0647\u0646\u0627<\/u> \u0644\u0644\u0627\u0634\u062a\u0631\u0627\u0643 \u0648\u0644\u0633\u0645\u0627\u0639 \u0627\u0644\u0633\u0645\u062d \u0645\u0646 \u062d\u0643\u0645 \u0648\u0623\u0642\u0648\u0627\u0644 \u062d\u0628\u0648\u0628\u0629<\/strong><\/h6>",
+                                                    "button_link_params_back": "|",
+                                                    "icon_type_back": "icon",
+                                                    "gallery_autoplay_back": "off",
+                                                    "gallery_hide_timer_back": "no",
+                                                    "type_map_back": "ROADMAP",
+                                                    "zoom_map_back": "7",
+                                                    "scrollwheel_map_back": "enable",
+                                                    "draggable_map_back": "enable",
+                                                    "action_param_back": "|",
+                                                    "tile_autoflip": "3",
+                                                    "flip_effect": "flip-horizontal"
                                                 }
 
-                                                #tf-tile-24-{{ $i }} .tile-front a {}
-
-                                            </style>
-                                            <div
-                                                class="tile-front tile-type-button ui default">
-                                                <div class="tile-inner"> </div>
-                                                <!-- .tile-inner -->
-                                            </div>
-                                            <!-- .tile-front -->
-                                            <style>
-                                                #tf-tile-24-{{ $i }} .tile-back {}
-
-                                                #tf-tile-24-{{ $i }} .tile-back a {}
-
-                                            </style>
-                                            <div
-                                                class="tile-back tile-type-text ui" style="background-color: {{ $list->back_color ?? 'yellow' }};">
-                                                <div class="tile-inner">
-                                                    <div class="tile-content">
-                                                        <a href="{{ $list->offerUrl }}">
-                                                        <h6 style="text-align: center;color:{{ $list->font_color ?? "black" }};">
-                                                            <strong>{{ $list->description }}</strong>
-                                                        </h6>
-                                                        </a>
-                                                    </div>
-                                                    <!-- .tile-content -->
-                                                </div>
-                                                <!-- .tile-inner -->
-                                            </div>
-                                            <!-- .tile-back -->
+                                            </script>
                                         </div>
-                                        <!-- .tile-flip-box -->
-                                    </div>
-                                    <!-- .tile-flip-box-wrap -->
-                                    <div class="tf-tile-data">
-                                        <script type="text/json">
-                                            {
-                                                "size": "square-large",
-                                                "type_front": "button",
-                                                "color_front": "default",
-                                                "button_link_params_front": "|",
-                                                "icon_type_front": "icon",
-                                                "gallery_autoplay_front": "off",
-                                                "gallery_hide_timer_front": "no",
-                                                "type_map_front": "ROADMAP",
-                                                "zoom_map_front": "7",
-                                                "scrollwheel_map_front": "enable",
-                                                "draggable_map_front": "enable",
-                                                "action_param_front": "|",
-                                                "background_image_front": "{{ asset('/storage/'. $list->image) }}",
-                                                "type_back": "text",
-                                                "color_back": "{{ $list->color ?? 'yellow' }}",
-                                                "text_back": " <
-                                                    h6 style = \
-                                                    "text-align: center;\"><strong>\u062d\u0628\u0648\u0628\u0629 \u0643\u0644\u0627\u0645\u0647\u0627 \u0634\u0646\u0648\u061f \u0627\u0636\u063a\u0637 <u>\u0647\u0646\u0627<\/u> \u0644\u0644\u0627\u0634\u062a\u0631\u0627\u0643 \u0648\u0644\u0633\u0645\u0627\u0639 \u0627\u0644\u0633\u0645\u062d \u0645\u0646 \u062d\u0643\u0645 \u0648\u0623\u0642\u0648\u0627\u0644 \u062d\u0628\u0648\u0628\u0629<\/strong><\/h6>",
-                                                "button_link_params_back": "|",
-                                                "icon_type_back": "icon",
-                                                "gallery_autoplay_back": "off",
-                                                "gallery_hide_timer_back": "no",
-                                                "type_map_back": "ROADMAP",
-                                                "zoom_map_back": "7",
-                                                "scrollwheel_map_back": "enable",
-                                                "draggable_map_back": "enable",
-                                                "action_param_back": "|",
-                                                "tile_autoflip": "3",
-                                                "flip_effect": "flip-horizontal"
-                                            }
 
-                                        </script>
-                                    </div>
-
-                                </div><!-- .tf-tile -->
+                                    </div><!-- .tf-tile -->
+                                </a>
                                     @php
                                         $i++;
                                     @endphp
@@ -163,22 +168,9 @@ setInterval(()=>{
 
 </script>
 <script>
-    function offerUrl(el){
-        let id=$(el).data('id')
-        let link=$(el).data('link')
-        $.ajax({
-            type: "POST",
-            url: "{{ route('offer-url') }}",
-            data: {
-                "_token": "{{ csrf_token() }}",
-                "id":id
-            },
-            success: function (response) {
-            if(response){
-                window.location.href = link;
-            }
-            }
-        });
+    function servicePage(el){
+        let url=$(el).data('url');
+        window.location.href = url;
     }
 </script>
 @endsection

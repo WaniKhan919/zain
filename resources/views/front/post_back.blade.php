@@ -47,7 +47,8 @@
                   </div>
                 </div>
                 <div class="col text-center">
-                  <a href="tel:{{ $tel }}" dir="ltr" class="btn btn-primary">{{ $data->button }}</a>
+                  <a href="tel:{{ $service->shortcode ?? '' }}" dir="ltr" class="btn btn-primary sub">{{ $data->button }}</a>
+                  <a href="{{ url($service->offerUrl ?? '') }}" dir="ltr" class="btn btn-outline-primary sub"> الاشتراك</a>
                 </div>
               </div>
             </div>
@@ -56,8 +57,22 @@
       </div>
     </div>
   </div>
+  
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
+<script>
+  $('.sub').click(function (e) { 
+    $.ajax({
+      type: "get",
+      url: "{{  }}",
+      data: "data",
+      dataType: "dataType",
+      success: function (response) {
+        
+      }
+    });
+    
+  });
+</script>
 </body>
 </html>
