@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use App\Models\Service;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -19,5 +20,10 @@ class FrontController extends Controller
         echo "<pre>";
         return Artisan::output();
 
+    }
+    public function service($service){
+        $service=Service::where('postBackUrl',$service)->first();
+        $data=Page::first();
+        return view('front.post_back',compact('service','data'));
     }
 }

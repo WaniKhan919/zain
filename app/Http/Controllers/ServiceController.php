@@ -39,6 +39,7 @@ class ServiceController extends Controller
         $request->validate([
             'title' => 'required',
             'image' => 'required|image',
+            'shortcode' => 'required',
             'description' => 'required',
         ]);
         $model=new Service();
@@ -47,6 +48,7 @@ class ServiceController extends Controller
         $model->postBackUrl=$request->postBackUrl;
         $model->back_color=$request->back_color;
         $model->font_color=$request->font_color;
+        $model->shortcode=$request->shortcode;
         $model->description=$request->description;
         if($request->has('image')){
             $name = $request->file('image')->getClientOriginalName();
@@ -110,6 +112,7 @@ class ServiceController extends Controller
         $model->postBackUrl=$request->postBackUrl;
         $model->back_color=$request->back_color;
         $model->font_color=$request->font_color;
+        $model->shortcode=$request->shortcode;
         $model->description=$request->description;
         if($request->has('image')){
             $image_path = public_path('storage/'.$model->image);
