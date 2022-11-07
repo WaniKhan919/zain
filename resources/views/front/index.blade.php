@@ -19,7 +19,7 @@
                                 @endphp
                                 @foreach ($services as $list)
                                 @if ($list->postBackUrl)
-                                <a href="#" onclick="servicePage(this)" data-url="{{ route('service-page',$list->postBackUrl) }}">
+                            <a href="#" onclick="servicePage(this)" data-url="{{ route('service-page',$list->postBackUrl) }}">
                                 @else
                                 <a href="#">
                                 @endif
