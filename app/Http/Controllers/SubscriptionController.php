@@ -28,11 +28,13 @@ class SubscriptionController extends Controller
                     $res_post = Http::get($postb);
                     // \Log::channel('postback')->info($res_post->body() . "\n");
                     session()->forget('clickid');
+                    
+                    return response()->json(['successs'=>'successs','postBack'=>$res_post->body()]);
                     } catch (\Exception $e) {
                         return response()->json(['error'=>'error catch']);
                     }
             }
-            return response()->json(['successs'=>'successs','postBack'=>$res_post->body()]);
+            return response()->json(['successs'=>'successs']);
         } else {
             return response()->json(['error'=>'error']);
 
