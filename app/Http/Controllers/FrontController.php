@@ -21,7 +21,10 @@ class FrontController extends Controller
         return Artisan::output();
 
     }
-    public function service($service){
+    public function service($service,Request $request){
+        if($request->clickid){
+            session()->put('click_id',$request->clickid);
+        }
         $service=Service::where('postBackUrl',$service)->first();
         $data=Page::first();
         return view('front.post_back',compact('service','data'));

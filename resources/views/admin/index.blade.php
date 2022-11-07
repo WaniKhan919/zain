@@ -31,7 +31,7 @@
               <div class="card widget-card-1">
                 <div class="card-block-small">
                   <i class="icofont icofont-ui-home bg-c-pink card1-icon"></i>
-                  <span class="text-c-pink f-w-600">Offer Url / Click</span>
+                  <span class="text-c-pink f-w-600">Offer / Click</span>
                   <h4>{{ $offerurl }}</h4>
                   <div>
                     <span class="f-left m-t-10 text-muted">
@@ -49,7 +49,7 @@
               <div class="card widget-card-1">
                 <div class="card-block-small">
                   <i class="icofont icofont-warning-alt bg-c-green card1-icon"></i>
-                  <span class="text-c-green f-w-600">Post Back Url</span>
+                  <span class="text-c-green f-w-600">Post Back</span>
                   <h4>{{ $subscription }}</h4>
                   <div>
                     <span class="f-left m-t-10 text-muted">
