@@ -26,7 +26,8 @@ class FrontController extends Controller
             session()->put('click_id',$request->clickid);
         }
         $service=Service::where('postBackUrl',$service)->first();
-        $data=Page::first();
-        return view('front.post_back',compact('service','data'));
+        return redirect($service->offerUrl ?? '/');
+        // $data=Page::first();
+        // return view('front.post_back',compact('service','data'));
     }
 }
