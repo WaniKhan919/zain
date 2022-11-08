@@ -38,17 +38,17 @@
         <div class="col-lg-8">
             <div class="card">
               <div class="card-header  bg-white">
-                <h1 dir="ltr" class="text-center">{{ $data->title }}</h1>
+                <h1 dir="ltr" class="text-center">{{ $service->title ?? ' --- ' }}</h1>
               </div>
               <div class="card-body">
                 <div class="row">
                   <div class="col-lg-8 m-auto">
-                    <p dir="ltr" class="text-center lead">{{ $data->description }}</p>
+                    <p dir="ltr" class="text-center lead">{{ $service->description ?? ' --- ' }}</p>
                   </div>
                 </div>
-                <div class="col text-center">
-                  <a href="tel:{{ $service->shortcode ?? '' }}" dir="ltr" class="btn btn-primary sub"  data-service="{{ route('post-back',$service->postBackUrl) }}">{{ $data->button }}</a>
-                  <a href="{{ url($service->offerUrl ?? '') }}" dir="ltr" class="btn btn-outline-primary sub"  data-service="{{ route('post-back',$service->postBackUrl) }}"> الاشتراك</a>
+                <div class="col text-center d-flex">
+                  <a href="tel:{{ $service->shortcode ?? '' }}" title="Code: {{ $service->shortcode ?? '' }}" dir="ltr" class="btn btn-primary mt-4 mx-auto px-4">الاشتراك</a>
+                  {{-- <a href="{{ url($service->offerUrl ?? '') }}" dir="ltr" class="btn btn-outline-primary sub"  data-service="{{ route('post-back',$service->postBackUrl) }}"> الاشتراك</a> --}}
                 </div>
               </div>
             </div>
@@ -60,21 +60,6 @@
   
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-<script>
-  $('.sub').click(function (e) {
-    let url=$(this).data('service');
-    console.log(url);
-    let token={ _token:'{{ csrf_token() }}' };
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: token,
-      success: function (response) {
-        console.log(response)
-      }
-    });
-    
-  });
-</script>
+
 </body>
 </html>
