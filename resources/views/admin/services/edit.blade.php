@@ -67,7 +67,7 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Offer Url</label>
+                      <label class="col-sm-2 col-form-label">Subscription Url</label>
                       <div class="col-sm-4">
                         <input id="color" type="text" name="offerUrl" class="form-control" placeholder="Offer URL" value="{{ $service->offerUrl ?? ''}}">
                         @error('offerUrl')
@@ -78,6 +78,8 @@
                       </div>
                       <label class="col-sm-2 col-form-label">Post Back URL</label>
                       <div class="col-sm-4">
+                      <div class="form-group d-flex align-items-center">
+                      <span class="">{{ url('/') . '/' }}</span>
                         <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="Post Back Url" value="{{ $service->postBackUrl ?? ''}}" >
                         @error('postBackUrl')
                           <span class="text-danger" role="alert">
@@ -85,9 +87,10 @@
                           </span>
                         @enderror
                       </div>
+                      </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Back Color</label>
+                      <label class="col-sm-2 col-form-label">FlipCard Back Color</label>
                       <div class="col-sm-4">
                         <input id="color" type="color" name="back_color" class="form-control" value="{{ $service->back_color ?? ''}}" style="height:50px !important;">
                         @error('bg_color')
@@ -96,7 +99,7 @@
                           </span>
                         @enderror
                       </div>
-                      <label class="col-sm-2 col-form-label">Font Color</label>
+                      <label class="col-sm-2 col-form-label">FlipCard Font Color</label>
                       <div class="col-sm-4">
                         <input id="color" type="color" name="font_color" class="form-control" value="{{ $service->font_color ?? '' }}" style="height:50px !important;">
                         @error('font_color')

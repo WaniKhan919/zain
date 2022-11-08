@@ -13,13 +13,13 @@ class SubscriptionController extends Controller
     public function index($service,Request $request)
     {
 
-        if (isset($request->msisdn)) {
-            $service1=Service::where('postBackUrl', $service)->first();
+        $service1=Service::where('postBackUrl', $service)->first();
+        if (isset($request->msisdn) && $service1) {
             $click_id=session()->get('click_id');
 
             $model = Subscription::where('phone_no', $request->msisdn)->where('service_id', $service1->id)->where('service_name', $service)->first();
             if($model){
-                $model->status=1;
+                $model->subscribe=1;
                 $model->save();
             }else{
                 
