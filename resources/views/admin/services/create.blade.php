@@ -59,7 +59,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Title</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="title" placeholder="Title">
+                        <input type="text" class="form-control" name="title" placeholder="Service Title">
                         @error('title')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -77,9 +77,9 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Offer Url</label>
+                      <label class="col-sm-2 col-form-label">Subscription Url</label>
                       <div class="col-sm-4">
-                        <input id="color" type="text" name="offerUrl" class="form-control" placeholder="Offer URL" >
+                        <input id="color" type="text" name="offerUrl" class="form-control" placeholder="Subsription URL by Zain" >
                         @error('offerUrl')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -89,9 +89,9 @@
                       <label class="col-sm-2 col-form-label">Post Back URL
                       </label>
                       <div class="col-sm-4">
-                        <div class="form-group">
-                          <span class="">https://www.zain.bmazaj.com/</span>
-                          <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="Post Back Url"  >
+                        <div class="form-group d-flex align-items-center">
+                          <span class="font-weight-bold mx-2">{{ url('/') . '/' }}</span>
+                          <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="Post Back EndPoint"  >
                         </div>
                         @error('postBackUrl')
                           <span class="text-danger" role="alert">
@@ -101,7 +101,7 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Back Color</label>
+                      <label class="col-sm-2 col-form-label">FlipCard Back Color</label>
                       <div class="col-sm-4">
                         <input id="color" type="color" name="back_color" class="form-control" value="" style="height:50px !important;">
                         @error('bg_color')
@@ -110,7 +110,7 @@
                           </span>
                         @enderror
                       </div>
-                      <label class="col-sm-2 col-form-label">Font Color</label>
+                      <label class="col-sm-2 col-form-label">FlipCard Font Color</label>
                       <div class="col-sm-4">
                         <input id="color" type="color" name="font_color" class="form-control" value="" style="height:50px !important;">
                         @error('font_color')
