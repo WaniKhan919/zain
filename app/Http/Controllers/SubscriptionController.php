@@ -40,6 +40,7 @@ class SubscriptionController extends Controller
                 return response()->json(['error'=>'error']);
             }
         }
+        
         return redirect()->route('front.index');
     }
 
@@ -48,6 +49,7 @@ class SubscriptionController extends Controller
         $postback=Service::with('clicks')->get();
         return view('admin.postback.index',compact('postback'));
     }
+
     public function report($id)
     {
         
