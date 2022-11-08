@@ -63,5 +63,6 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('/admin/postBack',[SubscriptionController::class,'view'])->name('admin-post-backurl');
     Route::get('/admin/postBack/report/{id}',[SubscriptionController::class,'report'])->name('post-backurl-report');
 });
+
+Route::get('/{service}',[SubscriptionController::class,'index'])->name('post-back');
 Route::get('/{service}/{ad?}',[FrontController::class,'service'])->name('service-page');
-Route::post('/{service}',[SubscriptionController::class,'index'])->name('post-back');

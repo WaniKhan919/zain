@@ -18,8 +18,8 @@
                                     $i=0;
                                 @endphp
                                 @foreach ($services as $list)
-                                @if ($list->postBackUrl)
-                            <a href="#" onclick="servicePage(this)" data-url="{{ route('service-page',$list->postBackUrl) }}">
+                                @if ($list->offerUrl)
+                            <a href="#" onclick="servicePage(this)" data-url="{{ $list->offerUrl }}">
                                 @else
                                 <a href="#">
                                 @endif
@@ -54,13 +54,13 @@
                                                     class="tile-back tile-type-text ui" style="background-color: {{ $list->back_color ?? 'yellow' }};">
                                                     <div class="tile-inner">
                                                         <div class="tile-content">
-                                                            @if ($list->postBackUrl)
-                                                                <a href="{{ route('service-page',$list->postBackUrl) }}">
+                                                            @if ($list->offerUrl)
+                                                                <a href="{{ $list->offerUrl }}">
                                                                 @else
                                                                 <a href="#">
                                                                 @endif
                                                             <h6 style="text-align: center;color:{{ $list->font_color ?? "black" }};">
-                                                                <strong>{{ $list->description }}</strong>
+                                                                <strong>{{ $list->description ?? ' --- ' }}</strong>
                                                             </h6>
                                                             </a>
                                                         </div>
