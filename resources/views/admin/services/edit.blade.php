@@ -76,11 +76,11 @@
                           </span>
                         @enderror
                       </div>
-                      <label class="col-sm-2 col-form-label">Post Back URL</label>
+                      <label class="col-sm-2 col-form-label">Sevice EndPoint</label>
                       <div class="col-sm-4">
                       <div class="form-group d-flex align-items-center">
                       <span class="">{{ url('/') . '/' }}</span>
-                        <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="Post Back Url" value="{{ $service->postBackUrl ?? ''}}" >
+                        <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="eg. gaming" value="{{ $service->postBackUrl ?? ''}}" >
                         @error('postBackUrl')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -89,6 +89,22 @@
                       </div>
                       </div>
                     </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Analytics Postback URL</label>
+                      <div class="col-sm-4">
+                        <div class="form-group d-flex align-items-center">
+                          <input id="text" type="text" name="adlink" class="form-control" placeholder="eg. https://example.com/postback?clickid=" value="{{ $service->adlink ?? '' }}">
+                          <span class="font-weight-bold mx-2">{{ '{clickid}' }}</span>
+                        </div>
+                        @error('adlink')
+                          <span class="text-danger" role="alert">
+                            {{ $message }}
+                          </span>
+                        @enderror
+                      </div>
+                    </div>
+
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">FlipCard Back Color</label>
                       <div class="col-sm-4">
