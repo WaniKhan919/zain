@@ -59,7 +59,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Title</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="title" placeholder="Service Title">
+                        <input type="text" class="form-control" name="title" placeholder="Service Title" required>
                         @error('title')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -68,7 +68,7 @@
                       </div>
                       <label class="col-sm-2 col-form-label">Short Code</label>
                       <div class="col-sm-4">
-                        <input type="number" class="form-control" name="shortcode" placeholder="Short Code">
+                        <input type="number" class="form-control" name="shortcode" placeholder="Short Code" required>
                         @error('shortcode')
                           <span class="text-danger" role="alert">
                             {{ $message }}
@@ -76,6 +76,7 @@
                         @enderror
                       </div>
                     </div>
+
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Subscription Url</label>
                       <div class="col-sm-4">
@@ -86,12 +87,11 @@
                           </span>
                         @enderror
                       </div>
-                      <label class="col-sm-2 col-form-label">Post Back URL
-                      </label>
+                      <label class="col-sm-2 col-form-label">Service EndPoint</label>
                       <div class="col-sm-4">
                         <div class="form-group d-flex align-items-center">
                           <span class="font-weight-bold mx-2">{{ url('/') . '/' }}</span>
-                          <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="Post Back EndPoint"  >
+                          <input id="text" type="text" name="postBackUrl" class="form-control" placeholder="eg. gaming" required>
                         </div>
                         @error('postBackUrl')
                           <span class="text-danger" role="alert">
@@ -100,6 +100,23 @@
                         @enderror
                       </div>
                     </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Analytics Postback URL</label>
+                      <div class="col-sm-4">
+                        <div class="form-group d-flex align-items-center">
+                          <input id="text" type="text" name="adlink" class="form-control" placeholder="eg. https://example.com/postback?clickid=">
+                          <span class="font-weight-bold mx-2">{{ '{clickid}' }}</span>
+                        </div>
+                        @error('adlink')
+                          <span class="text-danger" role="alert">
+                            {{ $message }}
+                          </span>
+                        @enderror
+                      </div>
+                    </div>
+
+
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">FlipCard Back Color</label>
                       <div class="col-sm-4">
@@ -123,7 +140,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Thumbnail</label>
                       <div class="col-sm-10">
-                        <input type="file" class="form-control" name="image">
+                        <input type="file" class="form-control" name="image" required>
                         @error('image')
                           <span class="text-danger" role="alert">
                             {{ $message }}

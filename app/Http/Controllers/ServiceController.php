@@ -40,7 +40,7 @@ class ServiceController extends Controller
             'title' => 'required',
             'image' => 'required|image',
             'shortcode' => 'required',
-            'description' => 'required',
+            'description' => '',
         ]);
         $model=new Service();
         $model->title=$request->title;
@@ -49,6 +49,7 @@ class ServiceController extends Controller
         $model->back_color=$request->back_color;
         $model->font_color=$request->font_color;
         $model->shortcode=$request->shortcode;
+        $model->adlink=$request->adlink;
         $model->description=$request->description;
         if($request->has('image')){
             $name = $request->file('image')->getClientOriginalName();
@@ -102,9 +103,9 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service,$id)
     {
         $request->validate([
-            'title' => 'required',
-            'image' => 'image',
-            'description' => 'required',
+            'title' => 'nullable|string',
+            'image' => 'nullable|image',
+            'description' => '',
         ]);
         $model=Service::findOrFail($id);
         $model->title=$request->title;
@@ -113,6 +114,7 @@ class ServiceController extends Controller
         $model->back_color=$request->back_color;
         $model->font_color=$request->font_color;
         $model->shortcode=$request->shortcode;
+        $model->adlink=$request->adlink;
         $model->description=$request->description;
         if($request->has('image')){
             $image_path = public_path('storage/'.$model->image);
