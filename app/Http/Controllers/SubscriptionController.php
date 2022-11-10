@@ -32,7 +32,8 @@ class SubscriptionController extends Controller
                 if ($model->save()) {
                     if (isset($click_id)) {
                         try {
-                            $postb = 'http://tracking.y2nx.com/postback?cid='. $click_id;
+                            $adlink = $service1->adlink ?? 'http://tracking.y2nx.com/postback?cid=';
+                            $postb = $adlink . $click_id;
                             // \Log::channel('postback')->info($postb);
 
                             $res_post = Http::get($postb);
